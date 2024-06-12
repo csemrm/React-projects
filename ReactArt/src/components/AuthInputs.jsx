@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import cssClassess from './AuthInputs.module.css';
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -21,13 +22,13 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
   return (
-    <div id="auth-inputs">
-      <div className="controls">
+    <div id="auth-inputs" className={`${cssClassess['auth-inputs']}`} >
+      <div className={`${cssClassess.controls}`} >
         <p>
           <label>Email</label>
           <input
             type="email"
-            className={emailNotValid ? 'invalid' : undefined}
+            className={emailNotValid ? cssClassess.invalid : undefined}
             onChange={(event) => handleInputChange('email', event.target.value)}
           />
         </p>
@@ -35,18 +36,18 @@ export default function AuthInputs() {
           <label>Password</label>
           <input
             type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
+            className={passwordNotValid ? cssClassess.invalid : undefined}
             onChange={(event) =>
               handleInputChange('password', event.target.value)
             }
           />
         </p>
       </div>
-      <div className="actions">
-        <button type="button" className="text-button">
+      <div className={`${cssClassess.actions}`}>
+        <button type="button" className={cssClassess["text-button"]}>
           Create a new account
         </button>
-        <button className='button' onClick={handleLogin}>Sign In</button>
+        <button className={`${cssClassess.button}`} onClick={handleLogin}>Sign In</button>
       </div>
     </div>
   );
